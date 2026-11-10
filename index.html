@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agentic x402 Kits, Apify Pay-Per-Event Actors &amp; 2026 Empirical Benchmarks</title>
+  <style>
+    :root {
+      --bg-0: #060913;
+      --bg-1: #0c1222;
+      --bg-2: #121b31;
+      --border: rgba(148, 163, 184, 0.16);
+      --border-hi: rgba(16, 185, 129, 0.45);
+      --text-0: #f8fafc;
+      --text-1: #cbd5e1;
+      --text-2: #94a3b8;
+      --emerald: #10b981;
+      --mint: #34d399;
+      --cyan: #38bdf8;
+      --violet: #a78bfa;
+      --amber: #fbbf24;
+      --mono: "JetBrains Mono", "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+      --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background:
+        radial-gradient(circle at 14% 8%, rgba(167, 139, 250, 0.15), transparent 36%),
+        radial-gradient(circle at 86% 10%, rgba(16, 185, 129, 0.14), transparent 38%),
+        var(--bg-0);
+      color: var(--text-0);
+      font-family: var(--sans);
+      line-height: 1.55;
+      padding-bottom: 4rem;
+    }
+    a { color: var(--mint); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 1260px; margin: 0 auto; padding: 0 1.5rem; }
+    header {
+      position: sticky; top: 0; z-index: 30;
+      backdrop-filter: blur(16px);
+      background: rgba(6, 9, 19, 0.85);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.9rem 0; gap: 1rem; flex-wrap: wrap;
+    }
+    .brand { display: flex; align-items: center; gap: 0.75rem; font-weight: 700; font-size: 1.03rem; }
+    .badge-logo {
+      width: 34px; height: 34px; border-radius: 9px;
+      background: linear-gradient(135deg, var(--mint), var(--cyan), var(--violet));
+      color: #04110b; display: grid; place-items: center;
+      font-family: var(--mono); font-weight: 800; font-size: 0.8rem;
+    }
+    .pills { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .pill {
+      font-family: var(--mono); font-size: 0.74rem; padding: 0.34rem 0.7rem;
+      border-radius: 999px; background: var(--bg-2); border: 1px solid var(--border); color: var(--text-1);
+    }
+    .pill.hi { border-color: var(--border-hi); color: var(--mint); background: rgba(16, 185, 129, 0.09); }
+    .hero {
+      padding: 3rem 0 1.8rem;
+      display: grid; grid-template-columns: 1.35fr 0.95fr; gap: 1.5rem;
+    }
+    @media (max-width: 960px) { .hero { grid-template-columns: 1fr; } }
+    .card {
+      background: linear-gradient(180deg, rgba(18, 27, 49, 0.86), rgba(12, 18, 34, 0.95));
+      border: 1px solid var(--border); border-radius: 18px; padding: 1.85rem;
+    }
+    .eyebrow {
+      font-family: var(--mono); font-size: 0.74rem; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--mint); margin-bottom: 0.75rem;
+    }
+    h1 { font-size: clamp(1.85rem, 3.1vw, 2.6rem); line-height: 1.14; letter-spacing: -0.03em; margin-bottom: 0.95rem; }
+    .grad {
+      background: linear-gradient(90deg, var(--mint), var(--cyan), var(--violet));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; margin-top: 1.35rem; }
+    @media (max-width: 720px) { .kpis { grid-template-columns: repeat(2, 1fr); } }
+    .kpi { background: rgba(6, 9, 19, 0.68); border: 1px solid var(--border); border-radius: 12px; padding: 0.85rem; }
+    .kpi-v { font-family: var(--mono); font-size: 1.22rem; font-weight: 700; color: var(--mint); }
+    .kpi-l { font-size: 0.74rem; color: var(--text-2); margin-top: 0.2rem; }
+    .section { margin-top: 1.8rem; background: rgba(12, 18, 34, 0.92); border: 1px solid var(--border); border-radius: 18px; padding: 1.75rem; }
+    .sec-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 1.2rem; flex-wrap: wrap; }
+    .sec-tag { font-family: var(--mono); font-size: 0.72rem; color: var(--cyan); text-transform: uppercase; letter-spacing: 0.08em; }
+    h2 { font-size: 1.32rem; margin-top: 0.2rem; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    @media (max-width: 880px) { .grid-2 { grid-template-columns: 1fr; } }
+    .actor-box {
+      background: var(--bg-1); border: 1px solid var(--border); border-radius: 14px; padding: 1.3rem;
+      display: flex; flex-direction: column; justify-content: space-between; gap: 0.85rem;
+    }
+    .btn {
+      display: inline-block; font-family: var(--mono); font-size: 0.8rem; font-weight: 700;
+      padding: 0.6rem 1.05rem; border-radius: 10px; text-decoration: none; cursor: pointer;
+      border: 1px solid var(--border); background: var(--bg-2); color: var(--text-0);
+    }
+    .btn.primary { background: linear-gradient(135deg, var(--mint), var(--emerald)); color: #03150d; border-color: transparent; }
+    .btn.violet { background: linear-gradient(135deg, #a78bfa, #38bdf8); color: #060913; border-color: transparent; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+    th, td { text-align: left; padding: 0.72rem 0.65rem; border-bottom: 1px solid var(--border); }
+    th { font-family: var(--mono); font-size: 0.72rem; text-transform: uppercase; color: var(--text-2); }
+    input.search {
+      font-family: var(--mono); font-size: 0.82rem; padding: 0.55rem 0.9rem;
+      border-radius: 10px; border: 1px solid var(--border); background: var(--bg-0); color: var(--text-0); min-width: 260px;
+    }
+    .tier-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.9rem; }
+    @media (max-width: 960px) { .tier-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .tier-grid { grid-template-columns: 1fr; } }
+    .tier { background: var(--bg-1); border: 1px solid var(--border); border-radius: 14px; padding: 1.15rem; }
+    .tier.featured { border-color: var(--border-hi); background: rgba(16, 185, 129, 0.06); }
+    footer { margin-top: 2.5rem; text-align: center; font-family: var(--mono); font-size: 0.8rem; color: var(--text-2); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container topbar">
+      <div class="brand">
+        <div class="badge-logo">402</div>
+        <div>Agentic <span style="color:var(--mint)">x402</span> &amp; Apify PPE Engineering Hub (2026)</div>
+      </div>
+      <div class="pills">
+        <a class="pill hi" href="https://github.com/tunguyen1993/agentic-x402-apify-kits-2026/releases/tag/v2026.11.0" target="_blank" rel="noopener">● Release v2026.11.0</a>
+        <a class="pill" href="https://github.com/tunguyen1993/agentic-x402-apify-kits-2026" target="_blank" rel="noopener">GitHub Repo &amp; CSVs ↗</a>
+        <a class="pill hi" href="https://booking-passed-pencil-sticker.trycloudflare.com/store" target="_blank" rel="noopener">NexusAI Token Store ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="card">
+        <div class="eyebrow">Empirical 2026 Agentic Commerce &amp; Developer Distribution Hub</div>
+        <h1>Production <span class="grad">x402 Micro-Payment Kits</span>, Apify PPE Actors &amp; Verified Benchmarks</h1>
+        <p style="color:var(--text-1); font-size:0.98rem;">
+          Built from our zero-spend empirical census across <strong>33,064 CDP Bazaar indexed HTTP 402 resources</strong> and
+          <strong>88 automated AST/regex security guardrails</strong>: download reproducible Apify Pay-Per-Event Python 3.12 Actor archives,
+          audit raw CSV datasets, browse our <strong>13-pack standalone engineering catalog ($482 value)</strong>, or provision high-RPM multi-pool API keys via NexusAI.
+        </p>
+        <div class="kpis">
+          <div class="kpi"><div class="kpi-v">33,064</div><div class="kpi-l">Indexed x402 Endpoints</div></div>
+          <div class="kpi"><div class="kpi-v">2 PPE</div><div class="kpi-l">Apify Python 3.12 Actors</div></div>
+          <div class="kpi"><div class="kpi-v">13 Kits</div><div class="kpi-l">$19–$59 ($482 Catalog)</div></div>
+          <div class="kpi"><div class="kpi-v">88 Rules</div><div class="kpi-l">52 CM + 36 Rust Scars</div></div>
+        </div>
+      </div>
+
+      <div class="card" style="background:#070c18; display:flex; flex-direction:column; justify-content:space-between;">
+        <div>
+          <div class="sec-tag">High-Throughput Frontier Inference</div>
+          <h2 style="margin:0.35rem 0 0.75rem;">NexusAI Orbital Token Gateway</h2>
+          <p style="font-size:0.88rem; color:var(--text-1); margin-bottom:0.9rem;">
+            Drop-in OpenAI (<code>/v1/chat/completions</code>) and Anthropic (<code>/v1/messages</code>) compatible gateway engineered for Cursor, Claude Code, and multi-agent SWE harnesses with atomic in-flight token reservation and <code>timingSafeEqual</code> key isolation.
+          </p>
+          <ul style="list-style:none; font-size:0.83rem; color:var(--text-1); display:grid; gap:0.45rem;">
+            <li>⚡ <strong>Starter (10M Tokens / 60 RPM):</strong> <code>99,000 VND</code></li>
+            <li>⚡ <strong>Pro Coder (50M Tokens / 120 RPM):</strong> <code>299,000 VND</code></li>
+            <li>⚡ <strong>VIP Agency (200M Tokens / 300 RPM):</strong> <code>799,000 VND</code></li>
+            <li>⚡ <strong>Unlimited Pro (30 Days / 300 RPM):</strong> <code>1,490,000 VND</code></li>
+          </ul>
+        </div>
+        <div style="margin-top:1.1rem;">
+          <a class="btn violet" href="https://booking-passed-pencil-sticker.trycloudflare.com/store" target="_blank" rel="noopener">Open NexusAI Token Store ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- APIFY PPE ACTORS -->
+    <section class="section" id="apify-ppe">
+      <div class="sec-head">
+        <div>
+          <div class="sec-tag">GitHub Release v2026.11.0 Binary Archives</div>
+          <h2>Apify Pay-Per-Event (<code>PPE</code>) Python 3.12 Actors</h2>
+        </div>
+        <a class="btn" href="https://github.com/tunguyen1993/agentic-x402-apify-kits-2026/releases/tag/v2026.11.0" target="_blank" rel="noopener">View Release Notes &amp; Checksums ↗</a>
+      </div>
+      <div class="grid-2">
+        <div class="actor-box">
+          <div>
+            <div style="font-family:var(--mono); font-size:0.78rem; color:var(--mint); font-weight:700;">ACTOR #1 · ai-agent-clean-markdown-x402-extractor</div>
+            <h3 style="margin:0.35rem 0 0.55rem; font-size:1.08rem;">Clean LLM Markdown, llms.txt &amp; Passive x402 Extractor</h3>
+            <p style="font-size:0.85rem; color:var(--text-1);">
+              Polite <code>robots.txt</code> HTML -&gt; token-lean Markdown + JSON-LD entity extraction + automatic <code>llms.txt</code> synthesis + passive zero-spend <code>HTTP 402</code> discovery with SSRF &amp; cross-origin redirect credential stripping.
+            </p>
+          </div>
+          <div>
+            <div style="font-family:var(--mono); font-size:0.74rem; color:var(--text-2); margin-bottom:0.65rem;">
+              PPE: <code>actor-start ($0.005)</code> + <code>page-extracted ($0.002)</code> · 25,664 B · SHA-256 <code>7f429e6da823...</code>
+            </div>
+            <a class="btn primary" href="https://github.com/tunguyen1993/agentic-x402-apify-kits-2026/releases/download/v2026.11.0/01_apify_ppe_x402_markdown_extractor.zip">⬇ Download 01_apify_ppe_x402_markdown_extractor.zip</a>
+          </div>
+        </div>
+
+        <div class="actor-box">
+          <div>
+            <div style="font-family:var(--mono); font-size:0.78rem; color:var(--cyan); font-weight:700;">ACTOR #2 · web3-oss-zero-bond-bounty-radar</div>
+            <h3 style="margin:0.35rem 0 0.55rem; font-size:1.08rem;">Zero-Bond Multi-Platform Bounty EV Radar</h3>
+            <p style="font-size:0.85rem; color:var(--text-1);">
+              Normalizes, deduplicates syndicated GitHub issues, screens Bidi/honeypot traps, and ranks strictly <code>$0</code>-bond cash bounties across Superteam Earn, Algora, Polar.sh, Opire, and IssueHunt by exact <code>Decimal(Reward) / (1 + OpenPRs)</code>.
+            </p>
+          </div>
+          <div>
+            <div style="font-family:var(--mono); font-size:0.74rem; color:var(--text-2); margin-bottom:0.65rem;">
+              PPE: <code>bounty-enriched ($0.003)</code> · 21,987 B · SHA-256 <code>863c36c77334...</code>
+            </div>
+            <a class="btn primary" href="https://github.com/tunguyen1993/agentic-x402-apify-kits-2026/releases/download/v2026.11.0/02_apify_ppe_zero_bond_bounty_radar.zip">⬇ Download 02_apify_ppe_zero_bond_bounty_radar.zip</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13-PACK CATALOG -->
+    <section class="section" id="catalog">
+      <div class="sec-head">
+        <div>
+          <div class="sec-tag">One-Time Ownership · Zero Recurring SaaS Lock-In</div>
+          <h2>13-Pack Production AI, Security &amp; Quant Engineering Catalog ($482 Total Value)</h2>
+        </div>
+        <input type="search" id="kitSearch" class="search" placeholder="Filter 13 kits (e.g. x402, mcp, rust, solana)..." />
+      </div>
+      <div style="overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Slug</th>
+              <th>Engineering Bundle Title</th>
+              <th>Price</th>
+              <th>Files</th>
+              <th>ZIP Size</th>
+              <th>SHA-256 (Prefix)</th>
+            </tr>
+          </thead>
+          <tbody id="catalogRows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- EMPIRICAL CSV DATASETS -->
+    <section class="section" id="datasets">
+      <div class="sec-head">
+        <div>
+          <div class="sec-tag">Reproducible Open Data · Schema 2026.11.track5.v1.1</div>
+          <h2>Empirical CSV Benchmarks Committed in This Repository</h2>
+        </div>
+      </div>
+      <div class="tier-grid" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="tier featured">
+          <div style="font-family:var(--mono); font-size:0.76rem; color:var(--mint);">51 SAMPLED / 33,064 INDEXED</div>
+          <h3 style="margin:0.35rem 0; font-size:1rem;">x402 Endpoints Census CSV</h3>
+          <p style="font-size:0.82rem; color:var(--text-1); margin-bottom:0.8rem;">Base EIP-3009 USDC &amp; BSC USD1 pricing bands, operators, schemes, and live HTTP 402 handshakes.</p>
+          <a href="./x402_endpoints_benchmark_2026.csv" style="font-family:var(--mono); font-size:0.78rem;">⬇ x402_endpoints_benchmark_2026.csv</a>
+        </div>
+        <div class="tier">
+          <div style="font-family:var(--mono); font-size:0.76rem; color:var(--cyan);">20 TELEMETRY METRICS</div>
+          <h3 style="margin:0.35rem 0; font-size:1rem;">Guardrails &amp; Runtime CSV</h3>
+          <p style="font-size:0.82rem; color:var(--text-1); margin-bottom:0.8rem;">52 codified CM failure modes (11 CRIT, 31 HIGH, 10 MED), 19 zero-fee Web3 bounty programs &amp; CLI metrics.</p>
+          <a href="./dev_tooling_guardrails_benchmark_2026.csv" style="font-family:var(--mono); font-size:0.78rem;">⬇ dev_tooling_guardrails_benchmark_2026.csv</a>
+        </div>
+        <div class="tier">
+          <div style="font-family:var(--mono); font-size:0.76rem; color:var(--violet);">16 VERIFIED ARCHIVES</div>
+          <h3 style="margin:0.35rem 0; font-size:1rem;">Bundles Manifest CSV</h3>
+          <p style="font-size:0.82rem; color:var(--text-1); margin-bottom:0.8rem;">Exact 6-decimal atomic USDC pricing, compression ratios, byte counts, and full SHA-256 digests.</p>
+          <a href="./gumroad_bundles_catalog_2026.csv" style="font-family:var(--mono); font-size:0.78rem;">⬇ gumroad_bundles_catalog_2026.csv</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Published by <a href="https://github.com/tunguyen1993" target="_blank" rel="noopener">@tunguyen1993</a> ·
+      <a href="https://github.com/tunguyen1993/agentic-x402-apify-kits-2026" target="_blank" rel="noopener">Repository</a> ·
+      <a href="https://booking-passed-pencil-sticker.trycloudflare.com/store" target="_blank" rel="noopener">NexusAI Token Store</a>
+    </footer>
+  </main>
+
+  <script>
+    const KITS = [
+      { rank: 1, slug: "x402-api-boilerplate", title: "x402 API Micro-SaaS Boilerplate: Pay-Per-Request APIs for AI Agents", price: "$29.00", files: 5, bytes: "64,023 B", sha: "cc0534284688" },
+      { rank: 2, slug: "ai-coding-agent-eval-and-swe-harness-2026", title: "SWE Eval Harness & Adversarial Multi-Model Council", price: "$49.00", files: 4, bytes: "35,076 B", sha: "613197deae50" },
+      { rank: 3, slug: "ai-engineering-prompts", title: "500 Production AI Engineering System Prompts + 5-Layer Director Bible", price: "$19.00", files: 6, bytes: "159,001 B", sha: "22327894b56a" },
+      { rank: 4, slug: "mcp-server-kit", title: "Production MCP & Autonomous Agent Server Kit (8-File Suite)", price: "$29.00", files: 8, bytes: "171,518 B", sha: "8fbba300fdc8" },
+      { rank: 5, slug: "nextjs15-fastapi-stripe-saas-starter-2026", title: "Next.js 15 + FastAPI + RBAC + Stripe SaaS Starter", price: "$49.00", files: 4, bytes: "41,475 B", sha: "78f226642f8b" },
+      { rank: 6, slug: "python-async-playwright-stealth-data-pipelines-2026", title: "Compliant Async HTTP/ETL & Citation Auditor Pipeline", price: "$39.00", files: 4, bytes: "51,659 B", sha: "53dc4dd69bb1" },
+      { rank: 7, slug: "quant-crypto-microstructure-backtester-2026", title: "Quantitative Crypto Funding-Rate & Microstructure Backtester", price: "$39.00", files: 7, bytes: "108,588 B", sha: "cb3f21830113" },
+      { rank: 8, slug: "rust-tokio-high-frequency-networking-templates-2026", title: "Low-Latency Rust Tokio Orderbook Sync Manual & Engine", price: "$59.00", files: 3, bytes: "30,415 B", sha: "11601d50d5fe" },
+      { rank: 9, slug: "solana-anchor-rust-security-and-mev-kit-2026", title: "Solana Anchor Smart Contract Security & Forensics Handbook", price: "$59.00", files: 5, bytes: "53,726 B", sha: "f22c0f8ec927" },
+      { rank: 10, slug: "solidity-foundry-audit-suite-2026", title: "DeFi & Solidity Security Audit Bible + Foundry PoC Templates", price: "$39.00", files: 8, bytes: "127,458 B", sha: "e34311a425d7" },
+      { rank: 11, slug: "01-mcp-token-saver-kit-gumroad-bundle", title: "MCP Smart Codebase & AST Token Saver (62%–68% Reduction)", price: "$19.00", files: 4, bytes: "7,678 B", sha: "718c587ed831" },
+      { rank: 12, slug: "02-ai-security-reverse-eng-audit-kit-gumroad-bundle", title: "AI Agent & MCP Security Secret-Leak Auditor CLI", price: "$29.00", files: 2, bytes: "3,337 B", sha: "b93de2f0e31c" },
+      { rank: 13, slug: "03-github-bounty-autopilot-kit-gumroad-bundle", title: "GitHub Cash Bounty Radar & Anti-Honeypot CLI", price: "$24.00", files: 2, bytes: "2,349 B", sha: "c347cbf107fe" }
+    ];
+
+    function renderKits(filterText) {
+      const q = (filterText || "").trim().toLowerCase();
+      const tbody = document.getElementById("catalogRows");
+      tbody.innerHTML = "";
+      KITS.filter(k => !q || k.slug.toLowerCase().includes(q) || k.title.toLowerCase().includes(q)).forEach(k => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td style="font-family:var(--mono); color:var(--text-2);">${k.rank}</td>
+          <td style="font-family:var(--mono); color:var(--cyan);">${k.slug}</td>
+          <td>${k.title}</td>
+          <td style="font-family:var(--mono); color:var(--mint); font-weight:700;">${k.price}</td>
+          <td style="font-family:var(--mono);">${k.files}</td>
+          <td style="font-family:var(--mono); color:var(--text-1);">${k.bytes}</td>
+          <td style="font-family:var(--mono); color:var(--violet);">${k.sha}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    document.getElementById("kitSearch").addEventListener("input", e => renderKits(e.target.value));
+    renderKits("");
+  </script>
+</body>
+</html>
