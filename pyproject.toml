@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agentic-x402-apify-kits"
+version = "1.1.0"
+description = "Zero-dependency MCP stdio server & empirical 2026 x402 micro-payment endpoint census, dev tooling guardrails, and 16-bundle developer catalog (Apache-2.0)."
+readme = "README.md"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.9"
+authors = [
+  { name = "Tu Nguyen" }
+]
+keywords = [
+  "mcp",
+  "model-context-protocol",
+  "x402",
+  "apify",
+  "ai-agents",
+  "benchmarks",
+  "guardrails",
+  "micro-payments"
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: Apache Software License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+  "Topic :: Utilities"
+]
+dependencies = []
+
+[project.scripts]
+agentic-x402-mcp = "agentic_x402_mcp.mcp_server:main"
+
+[project.urls]
+Homepage = "https://github.com/tunguyen1993/agentic-x402-apify-kits-2026"
+Repository = "https://github.com/tunguyen1993/agentic-x402-apify-kits-2026"
+Issues = "https://github.com/tunguyen1993/agentic-x402-apify-kits-2026/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+agentic_x402_mcp = ["data/*.csv"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

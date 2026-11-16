@@ -1,5 +1,8 @@
 # Agentic `x402` Micro-Payment Boilerplates, Apify Pay-Per-Event (`PPE`) Actors & Empirical Benchmarks (2026)
 
+[![M8ven Score](https://m8ven.ai/badge/mcp/tunguyen1993/agentic-x402-apify-kits-2026)](https://m8ven.ai/mcp/tunguyen1993/agentic-x402-apify-kits-2026?s=readme)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+[![Zero Dependencies](https://img.shields.io/badge/Dependencies-Zero%20(stdlib)-success.svg)](pyproject.toml)
 [![Live Storefront](https://img.shields.io/badge/Live_Storefront-GitHub_Pages-10B981?style=for-the-badge&logo=github)](https://tunguyen1993.github.io/agentic-x402-apify-kits-2026/)
 [![Release v2026.11.0](https://img.shields.io/badge/Apify_PPE_Actor_ZIPs-Release_v2026.11.0-38BDF8?style=for-the-badge&logo=github)](https://github.com/tunguyen1993/agentic-x402-apify-kits-2026/releases/tag/v2026.11.0)
 [![NexusAI Token Store](https://img.shields.io/badge/NexusAI_Token_Store-OpenAI_&_Anthropic_Gateway-8B5CF6?style=for-the-badge)](https://booking-passed-pencil-sticker.trycloudflare.com/store)
@@ -10,7 +13,54 @@
 > **NexusAI Multi-Pool LLM Token Store (`99,000 VND – 1,490,000 VND` · OpenAI & Anthropic Compatible):**  
 > **https://booking-passed-pencil-sticker.trycloudflare.com/store**
 >
-> **Dataset Schema:** `2026.11.track5.v1.1` (`100%` deterministic empirical telemetry, fixed-point `Decimal` atomic math, `88` unified AST/regex pre-commit guardrails).
+> **Dataset Schema:** `2026.11.track5.v1.1` (`100%` deterministic empirical telemetry, fixed-point `Decimal` atomic math, `88` unified AST/regex pre-commit guardrails, Apache-2.0).
+
+---
+
+## MCP Server Quickstart (`agentic-x402-mcp`)
+
+This repository ships **`agentic-x402-apify-kits`** (`v1.1.0`, `Apache-2.0`) with a **zero-dependency Model Context Protocol (`MCP`) `stdio` JSON-RPC 2.0 server** ([`src/agentic_x402_mcp/mcp_server.py`](src/agentic_x402_mcp/mcp_server.py), protocol `2024-11-05`, Python `>=3.9` stdlib only).
+
+- **Offline & Zero-Credential Guarantee:** Zero `os.environ` reads, zero outbound network calls, zero `subprocess`/`eval`/`exec` usage, and strict allowlisted CSV resolution inside the validated dataset root.
+- **Sibling Security & PreToolUse Guardrails:** Built alongside [`tunguyen1993/kintsugi-harness`](https://github.com/tunguyen1993/kintsugi-harness) (`Apache-2.0` zero-dependency MCP guardrail engine & `KMI/1` skill compiler).
+
+### Install & Run
+
+```bash
+pip install git+https://github.com/tunguyen1993/agentic-x402-apify-kits-2026.git
+agentic-x402-mcp --self-test
+agentic-x402-mcp
+```
+
+Or run directly from a local clone without installing:
+
+```bash
+PYTHONPATH=src python3 -m agentic_x402_mcp.mcp_server --self-test
+PYTHONPATH=src python3 -m unittest discover -s tests -v
+```
+
+### Client Configuration (`Claude Desktop` / `Cursor` / `Claude Code` / `Windsurf`)
+
+```json
+{
+  "mcpServers": {
+    "agentic-x402-apify-kits": {
+      "command": "agentic-x402-mcp"
+    }
+  }
+}
+```
+
+### Exposed Read-Only MCP Tools (`4` Tools)
+
+All 4 tools declare explicit boolean MCP annotations (`readOnlyHint=true`, `destructiveHint=false`, `idempotentHint=true`, `openWorldHint=false`):
+
+| Tool Name | Dataset | Key Arguments | Purpose |
+| :--- | :--- | :--- | :--- |
+| `x402_list_endpoints_benchmark` | `x402_endpoints_benchmark_2026.csv` | `network`, `price_band`, `verified`, `is_json_x402`, `query`, `limit`, `offset` | Filter, search, and summarize `51` deduplicated `x402` endpoints across Base (`eip155:8453`) and BNB Chain (`eip155:56`). |
+| `x402_list_guardrails_benchmark` | `dev_tooling_guardrails_benchmark_2026.csv` | `benchmark_domain`, `metric_key`, `query`, `limit`, `offset` | Query `20` empirical engineering metrics across `x402` census counts, `52` code-mistake guardrails, bounty radar, and CLI compatibility. |
+| `x402_list_apify_kits_catalog` | `gumroad_bundles_catalog_2026.csv` | `channel`, `billing_model`, `in_manifest_only`, `slug`, `max_price_usd`, `query`, `limit`, `offset` | Inspect all `16` Apify & developer kit bundles with exact `Decimal` USD prices, `6`-decimal atomic USDC amounts, byte counts, and SHA-256 digests. |
+| `x402_verify_dataset_integrity` | All `3` committed CSV files | `dataset`, `include_headers` | Verify dataset presence, rectangular CSV structure, row/column counts, byte sizes, and deterministic SHA-256 checksums. |
 
 ---
 
