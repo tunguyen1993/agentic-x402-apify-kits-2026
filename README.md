@@ -1,6 +1,6 @@
 # Agentic `x402` Micro-Payment Boilerplates, Apify Pay-Per-Event (`PPE`) Actors & Empirical Benchmarks (2026)
 
-[![M8ven Score](https://m8ven.ai/badge/mcp/tunguyen1993/agentic-x402-apify-kits-2026)](https://m8ven.ai/mcp/tunguyen1993/agentic-x402-apify-kits-2026?s=readme)
+[![M8ven Score](https://m8ven.ai/badge/mcp/tunguyen1993-agentic-x402-apify-kits-2026-1y2r05?v=fc7fa540cf8565479ada2b3c6f1ed556)](https://m8ven.ai/mcp/tunguyen1993-agentic-x402-apify-kits-2026-1y2r05?s=readme)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![Zero Dependencies](https://img.shields.io/badge/Dependencies-Zero%20(stdlib)-success.svg)](pyproject.toml)
 [![Live Storefront](https://img.shields.io/badge/Live_Storefront-GitHub_Pages-10B981?style=for-the-badge&logo=github)](https://tunguyen1993.github.io/agentic-x402-apify-kits-2026/)
